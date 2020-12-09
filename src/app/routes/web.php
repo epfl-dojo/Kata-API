@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\Beer;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,39 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// ---------------------------
+// /controller/action/param
+// ---------------------------
+
+
+// Route::get('/beer', function () {
+//     return Beer::all();
+// });
+//
+// Route::get('/beer/{id}', function () {
+//     return view('welcome', ['id' => $beer_id]);
+// });
+//
+// Route::match(['get', 'post'], '/hello/{firstName}', function ($firstName) {
+//     return view('helloNicolas', ['firstName' => ucfirst($firstName)]);
+// });
+//
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+//
+// // Route::get('/hw', function () {
+// //     return view('hw');
+// // });
+//
+// Route::get('/hw', function () {
+//     return view('hw');
+// });
+//
+// Route::match(['get', 'post'], '/hello/{firstName}', function ($firstName) {
+//     return view('helloNicolas', ['firstName' => ucfirst($firstName)]);
+// });
+//
+//
+//
+// Route::get('/{page}', 'PageController@view')->name('pages.view');
