@@ -69,7 +69,7 @@ Route::get('/beer/{id}', function ($id) {
 });
 
 Route::delete('/beer/{id}', function ($id) {
-    Beer::delete($id);
+    Beer::destroy($id);
 });
 
 // Route::put('/beer/{id}', function ($id) {
