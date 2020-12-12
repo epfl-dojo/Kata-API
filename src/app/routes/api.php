@@ -40,68 +40,34 @@ Route::delete('/beer/{id}', function ($id) {
     BeerController::deleteBeer($id);
 });
 
-Route::put('/beer/{id}', function (Request $request) {
-    BeerController::putBeer($request);
+Route::put('/beer/{id}', function (Request $request, $id) {
+    BeerController::putBeer($request, $id);
 });
 
 Route::patch('/beer/{id}', function (Request $request, $id) {
-    // $tmpBeer = Beer::has('comments', '>=', 3)->get();
-    Log::info(var_export($request->input('name')));
-
-    $date = new DateTime();
-    $formatedDate = $date->format('Y-m-d H:i:s');
-    $data = $request->json()->all();
-    $data['last_mod'] = $formatedDate;
-    $validator = Validator::make($data, [
-        'name' => ['string'],
-        'brewery_id' => ['integer'],
-        'cat_id' => ['integer'],
-        'style_id' => ['integer'],
-        'abv' => ['float'],
-        'ibu' => ['float'],
-        'srm' => ['float'],
-        'upc' => ['integer'],
-        'filepath' => ['string'],
-        'descript' => ['string'],
-        'add_user' => ['integer'],
-    ]);
-
-    if($validator->fails()){
-        Log::error('fail');
-        return 400;
-    } else {
-        Log::info('success');
-        $beer = Beer::find($id);
-        $beer->fill($data);
-        $beer->save();
-        return 204;
-    }
-
+    BeerController::patchBeer($request, $id);
 });
 
-
 Route::get('/breweries', function () {
-    return Breweries::all();
+    return BeerController::getBreweries();
 });
 
 Route::get('/breweries/{id}', function ($id) {
-    return Breweries::find($id);
+    return BeerController::getBrewerie($id);
 });
 
-
 Route::get('/categories', function () {
-    return Categories::all();
+    return BeerController::getCategories();
 });
 
 Route::get('/categories/{id}', function ($id) {
-    return Categories::find($id);
+    return BeerController::getCategorie($id);
 });
 
-
 Route::get('/styles', function () {
-    return Styles::all();
+    return BeerController::getStyles();
 });
 
 Route::get('/styles/{id}', function ($id) {
-    return Styles::find($id);
+    return BeerController::getStyle($id);
 });
