@@ -6,6 +6,8 @@ use App\Models\Beer;
 use App\Models\Breweries;
 use App\Models\Categories;
 use App\Models\Styles;
+
+use App\Http\Controllers\BeerController;
 use \Illuminate\Support\Facades\Validator;
 /*
 |--------------------------------------------------------------------------
@@ -23,96 +25,29 @@ use \Illuminate\Support\Facades\Validator;
 // });
 
 Route::get('/beers', function() {
-    // If the Content-Type and Accept headers are set to 'application/json',
-    // this will return a JSON structure. This will be cleaned up later.
-    return Beer::all();
+    return BeerController::getBeers();
 });
 
 Route::post('/beer', function(Request $request) {
-    // $json = $request->json();
-    Log::error(var_export($request->json()->all(), true));
-    Log::error(var_export($request->getContent(), true));
-    Log::error(var_export($request->input('name'), true));
-    $param = $request->getContent();
-
-    // Log::debug($param->name);
-
-
-    $validator = Validator::make($request->json()->all(), [
-        'name' => ['required'],
-        'descript' => 'required',
-    ]);
-    // $validator = Validator::make($request->json()->all(), [
-    //     'name' => ['required', 'integer'],
-    //     'descript' => 'required',
-    // ]);
-
-
-    $date = new DateTime();
-    $formatedDate = $date->format('Y-m-d H:i:s');
-    // Log::debug($date->format('Y-m-d H:i:s'));
-
-
-
-      if($validator->fails()){
-          Log::error('fail');
-          return 400;
-      } else {
-          Log::info('success');
-          Beer::create(['name' => $request->input('name'), 'brewery_id' => $request->input('brewery_id'), 'cat_id' => $request->input('cat_id'), 'style_id' => $request->input('style_id'), 'abv' => $request->input('abv'), 'ibu' => $request->input('ibu'), 'srm' => $request->input('srm'), 'upc' => $request->input('upc'), 'filepath' => $request->input('filepath'), 'descript' => $request->input('descript'), 'add_user' => $request->input('add_user'), 'last_mod' => $formatedDate]);
-          return 204;
-      }
-
-    // die();
-
-    // If the Content-Type and Accept headers are set to 'application/json',
-    // this will return a JSON structure. This will be cleaned up later.
-
-    // return '--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------';
+    BeerController::createBeer($request);
 });
 
 Route::get('/beer/{id}', function ($id) {
-    return Beer::find($id);
+    return BeerController::getBeer($id);
 });
 
 Route::delete('/beer/{id}', function ($id) {
-    Beer::destroy($id);
+    BeerController::deleteBeer($id);
 });
 
-Route::put('/beer/{id}', function (Request $request, $id) {
-    // $tmpBeer = Beer::has('comments', '>=', 3)->get();
-
-    $validator = Validator::make($request->json()->all(), [
-        'name' => ['required'],
-        'brewery_id' => ['required', 'integer'],
-        'cat_id' => ['required', 'integer'],
-        'style_id' => ['required', 'integer'],
-        'abv' => ['required', 'float'],
-        'ibu' => ['required', 'float'],
-        'srm' => ['required', 'float'],
-        'upc' => ['required', 'integer'],
-        'filepath' => 'required',
-        'descript' => 'required',
-        'add_user' => ['required', 'integer'],
-        'last_mod' => ['required', 'integer'],
-    ]);
-
-    if($validator->fails()){
-        Log::error('fail');
-        return 400;
-    } else {
-        Log::info('success');
-        $Beer = Beer::find($id);
-        $Beer->name = $request->input('name');
-        $Beer->save();
-        return 204;
-    }
-
-    // Beer::where('id', $id)
-    //       ->update(['name' => 'toto'])
+Route::put('/beer/{id}', function (Request $request) {
+    BeerController::putBeer($request);
 });
+
 Route::patch('/beer/{id}', function (Request $request, $id) {
     // $tmpBeer = Beer::has('comments', '>=', 3)->get();
+    Log::info(var_export($request->input('name')));
+
     $date = new DateTime();
     $formatedDate = $date->format('Y-m-d H:i:s');
     $data = $request->json()->all();
