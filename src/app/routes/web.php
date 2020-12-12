@@ -19,9 +19,11 @@ use App\Models\Beer;
 // ---------------------------
 
 
-// Route::get('/beer', function () {
-//     return Beer::all();
-// });
+Route::get('/', function () {
+    return view('beers', ['beers' => Beer::all()]);
+});
+
+
 //
 // Route::get('/beer/{id}', function () {
 //     return view('welcome', ['id' => $beer_id]);
