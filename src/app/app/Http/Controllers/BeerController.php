@@ -23,16 +23,6 @@ class BeerController extends Controller
 
     public static function createBeer($request){
 
-            // $json = $request->json();
-            Log::error(var_export($request->json()->all(), true));
-            Log::error(var_export($request->getContent(), true));
-            Log::debug(var_export($request->input('name'), true));
-            $param = $request->json()->all();
-            Log::debug(var_export($param, true));
-
-            // Log::debug($param->name);
-
-
             $date = new DateTime();
             $formatedDate = $date->format('Y-m-d H:i:s');
             $data = $request->json()->all();
@@ -52,15 +42,6 @@ class BeerController extends Controller
                 'add_user' => ['required', 'integer'],
                 'last_mod' => ['required', 'string'],
             ]);
-            // $validator = Validator::make($request->json()->all(), [
-            //     'name' => ['required', 'integer'],
-            //     'descript' => 'required',
-            // ]);
-
-
-            // Log::debug($date->format('Y-m-d H:i:s'));
-
-
 
               if($validator->fails()){
                   Log::error('fail');
@@ -119,9 +100,9 @@ class BeerController extends Controller
             'brewery_id' => ['integer'],
             'cat_id' => ['integer'],
             'style_id' => ['integer'],
-            'abv' => ['float'],
-            'ibu' => ['float'],
-            'srm' => ['float'],
+            'abv' => ['numeric'],
+            'ibu' => ['numeric'],
+            'srm' => ['numeric'],
             'upc' => ['integer'],
             'filepath' => ['string'],
             'descript' => ['string'],
@@ -163,7 +144,4 @@ class BeerController extends Controller
     public static function getStyle($id){
         return Styles::find($id);
     }
-
-
-
 }
