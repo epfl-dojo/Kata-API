@@ -20,7 +20,7 @@ use App\Models\Beer;
 
 
 Route::get('/', function () {
-    return view('beers', ['beers' => Beer::all()]);
+    return view('homepage');
 });
 
 

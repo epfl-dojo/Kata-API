@@ -3,3 +3,6 @@ restart:
 
 up:
 	docker-compose up
+
+exec:
+	docker exec -it kata-api_php_1 /bin/bash
