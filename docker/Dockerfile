@@ -6,3 +6,4 @@ RUN mv composer.phar /usr/local/bin/composer
 RUN composer global require laravel/installer
 RUN export PATH=$PATH:/root/.composer/vendor/bin
 RUN docker-php-ext-install pdo pdo_mysql
+RUN apt-get install nodejs -y; apt-get install npm -y;

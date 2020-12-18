@@ -1,0 +1,127 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Kata-API",
+        "description": "L5 Swagger OpenApi description",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/beers": {
+            "get": {
+                "description": "Get all beers",
+                "responses": {
+                    "default": {
+                        "description": "List of all beers"
+                    }
+                }
+            }
+        },
+        "/breweries": {
+            "get": {
+                "description": "Get all breweries",
+                "responses": {
+                    "default": {
+                        "description": "List of all breweries"
+                    }
+                }
+            }
+        },
+        "/categories": {
+            "get": {
+                "description": "Get all categories",
+                "responses": {
+                    "default": {
+                        "description": "List of all categories"
+                    }
+                }
+            }
+        },
+        "/styles": {
+            "get": {
+                "description": "Get all styles",
+                "responses": {
+                    "default": {
+                        "description": "List of all styles"
+                    }
+                }
+            }
+        },
+        "/beer": {
+            "post": {
+                "description": "Create a beer",
+                "responses": {
+                    "default": {
+                        "description": "Confirmation"
+                    }
+                }
+            }
+        },
+        "/beer/:id": {
+            "get": {
+                "description": "Return a beer by id",
+                "responses": {
+                    "default": {
+                        "description": "Beer"
+                    }
+                }
+            },
+            "put": {
+                "description": "Modify a beer by id",
+                "responses": {
+                    "default": {
+                        "description": "Confirmation"
+                    }
+                }
+            },
+            "delete": {
+                "description": "Delete a beer by id",
+                "responses": {
+                    "default": {
+                        "description": "Confirmation"
+                    }
+                }
+            },
+            "patch": {
+                "description": "Partially modify a beer by id",
+                "responses": {
+                    "default": {
+                        "description": "Confirmation"
+                    }
+                }
+            }
+        },
+        "/breweries/:id": {
+            "get": {
+                "description": "Return a brewerie by id",
+                "responses": {
+                    "default": {
+                        "description": "Brewerie"
+                    }
+                }
+            }
+        },
+        "/categories/:id": {
+            "get": {
+                "description": "Return a categorie by id",
+                "responses": {
+                    "default": {
+                        "description": "Categorie"
+                    }
+                }
+            }
+        },
+        "/styles/:id": {
+            "get": {
+                "description": "Return a style by id",
+                "responses": {
+                    "default": {
+                        "description": "Style"
+                    }
+                }
+            }
+        }
+    },
+    "security": [
+        []
+    ]
+}
