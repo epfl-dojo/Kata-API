@@ -24,6 +24,17 @@ use \Illuminate\Support\Facades\Validator;
 //     return $request->user();
 // });
 
+
+
+
+/**
+* @OA\Post(
+*     path="/lalala",
+*     description="Home page",
+*     @OA\Response(response="default", description="Welcome page")
+* )
+*/
+
 Route::get('/beers', function() {
     return BeerController::getBeers();
 });
