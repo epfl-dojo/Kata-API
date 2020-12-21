@@ -2,6 +2,7 @@ version: "3"
 services:
   php:
     build: ./docker
+    user: "1000:1000"
     volumes:
       #- ./www.conf:/usr/local/etc/php-fpm.d/www.conf
       - ./src/app:/srv/app
