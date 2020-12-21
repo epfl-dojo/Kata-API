@@ -2,12 +2,12 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Models\Beer;
-use App\Models\Breweries;
-use App\Models\Categories;
-use App\Models\Styles;
 
 use App\Http\Controllers\BeerController;
+use App\Http\Controllers\StyleController;
+use App\Http\Controllers\BreweryController;
+use App\Http\Controllers\CategoryController;
+
 use \Illuminate\Support\Facades\Validator;
 /*
 |--------------------------------------------------------------------------
@@ -27,13 +27,6 @@ use \Illuminate\Support\Facades\Validator;
 
 
 
-/**
-* @OA\Post(
-*     path="/lalala",
-*     description="Home page",
-*     @OA\Response(response="default", description="Welcome page")
-* )
-*/
 
 Route::get('/beers', function() {
     return BeerController::getBeers();
@@ -60,25 +53,25 @@ Route::patch('/beer/{id}', function (Request $request, $id) {
 });
 
 Route::get('/breweries', function () {
-    return BeerController::getBreweries();
+    return BreweryController::getBreweries();
 });
 
-Route::get('/breweries/{id}', function ($id) {
-    return BeerController::getBrewerie($id);
+Route::get('/brewery/{id}', function ($id) {
+    return BreweryController::getBrewerie($id);
 });
 
 Route::get('/categories', function () {
-    return BeerController::getCategories();
+    return CategoryController::getCategories();
 });
 
-Route::get('/categories/{id}', function ($id) {
-    return BeerController::getCategorie($id);
+Route::get('/category/{id}', function ($id) {
+    return CategoryController::getCategory($id);
 });
 
 Route::get('/styles', function () {
-    return BeerController::getStyles();
+    return StyleController::getStyles();
 });
 
-Route::get('/styles/{id}', function ($id) {
-    return BeerController::getStyle($id);
+Route::get('/style/{id}', function ($id) {
+    return StyleController::getStyle($id);
 });

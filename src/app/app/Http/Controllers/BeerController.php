@@ -4,22 +4,68 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Beer;
-use App\Models\Breweries;
-use App\Models\Styles;
-use App\Models\Categories;
 use \Illuminate\Support\Facades\Validator;
 use Log;
 use DateTime;
 
 class BeerController extends Controller
 {
+    /**
+    * @OA\Get(
+    *     path="/api/beers",
+    *     description="Get all beers",
+    *     tags={"Beer"},
+    *     @OA\Response(response="default", description="List of all beers")
+    * )
+    */
     public static function getBeers(){
         return Beer::all();
     }
 
+     /**
+     * @OA\Get(
+     *      path="/api/beer/{id}",
+     *      operationId="getBeerByID",
+     *      tags={"Beer"},
+     *      summary="Get a beer by ID",
+     *      description="Return a beer by id",
+     *      @OA\Parameter(
+     *          name="id",
+     *          description="Beer ID",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *          @OA\JsonContent(ref="#/components/schemas/Beer")
+     *       ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      )
+     *     )
+     */
     public static function getBeer($id){
         return Beer::find($id);
     }
+
+    /**
+    * @OA\Post(
+    *     path="/api/beer",
+    *     description="Create a beer",
+    *     tags={"Beer"},
+    *     @OA\Response(response="default", description="Confirmation")
+    * )
+    */
+
 
     public static function createBeer($request){
 
@@ -53,10 +99,26 @@ class BeerController extends Controller
               }
     }
 
+    /**
+    * @OA\Delete(
+    *     path="/api/beer/:id",
+    *     description="Delete a beer by id",
+    *     tags={"Beer"},
+    *     @OA\Response(response="default", description="Confirmation")
+    * )
+    */
     public static function deleteBeer($id){
         Beer::destroy($id);
     }
 
+    /**
+    * @OA\Put(
+    *     path="/api/beer/:id",
+    *     description="Modify a beer by id",
+    *     tags={"Beer"},
+    *     @OA\Response(response="default", description="Confirmation")
+    * )
+    */
     public static function putBeer($request, $id){
 
         $date = new DateTime();
@@ -90,6 +152,15 @@ class BeerController extends Controller
             return 204;
         }
     }
+
+    /**
+    * @OA\Patch(
+    *     path="/api/beer/:id",
+    *     description="Partially modify a beer by id",
+    *     tags={"Beer"},
+    *     @OA\Response(response="default", description="Confirmation")
+    * )
+    */
     public static function patchBeer($request, $id){
         $date = new DateTime();
         $formatedDate = $date->format('Y-m-d H:i:s');
@@ -119,29 +190,5 @@ class BeerController extends Controller
             $beer->save();
             return 204;
         }
-    }
-
-    public static function getBreweries(){
-        return Breweries::all();
-    }
-
-    public static function getBrewerie($id){
-        return Breweries::find($id);
-    }
-
-    public static function getCategories(){
-        return Categories::all();
-    }
-
-    public static function getCategorie($id){
-        return Categories::find($id);
-    }
-
-    public static function getStyles(){
-        return Styles::all();
-    }
-
-    public static function getStyle($id){
-        return Styles::find($id);
     }
 }

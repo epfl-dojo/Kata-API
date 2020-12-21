@@ -8,12 +8,94 @@ use Log;
 use DateTime;
 use \Illuminate\Support\Facades\Validator;
 
+/**
+ * @OA\Schema(
+ *     title="Beer",
+ *     description="Beer model",
+ *     @OA\Xml(
+ *         name="Beer"
+ *     )
+ * )
+ */
+
 class Beer extends Model
 {
     use HasFactory;
+    /**
+     * @OA\Property(
+     *     title="ID",
+     *     description="ID",
+     *     format="int64",
+     *     example=1
+     * )
+     *
+     * @var integer
+     */
+    private $id;
+
+    /**
+     * @OA\Property(
+     *      title="Name",
+     *      description="Name of the beer",
+     *      example="Edel Weissen"
+     * )
+     *
+     * @var string
+     */
+    public $name;
+
+    /**
+     * @OA\Property(
+     *      title="Description",
+     *      description="Description of the beer",
+     *      example="This is beer description"
+     * )
+     *
+     * @var string
+     */
+    public $descript;
+
+    /**
+     * @var Category
+     * @OA\Property()
+     */
+    private $cat_id;
+
+    /**
+     * @var Brewery
+     * @OA\Property()
+     */
+    private $brewery_id;
+
+    /**
+     * @OA\Property(
+     *     title="Created at",
+     *     description="Created at",
+     *     example="2020-01-27 17:50:45",
+     *     format="datetime",
+     *     type="string"
+     * )
+     *
+     * @var \DateTime
+     */
+    private $created_at;
+
+    /**
+     * @OA\Property(
+     *     title="last_mod",
+     *     description="last_mod",
+     *     example="2020-01-27 17:50:45",
+     *     format="datetime",
+     *     type="string"
+     * )
+     *
+     * @var \DateTime
+     */
+    private $last_mod;
+
     // https://stackoverflow.com/a/28277980
     public $timestamps = false;
-    protected $fillable = ['name', 'descript', 'last_mod', 'cat_id', 'style_id', 'abv', 'ibu', 'srm', 'upc', 'filepath', 'add_user', 'last_mod'];
+    protected $fillable = ['name', 'descript', 'cat_id', 'style_id', 'abv', 'ibu', 'srm', 'upc', 'filepath', 'add_user', 'last_mod'];
 
     public static function validateAll($data, $allFieldsRequired, $request){
 
