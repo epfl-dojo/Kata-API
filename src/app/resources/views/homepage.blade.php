@@ -36,9 +36,6 @@
                 echo $allBeers[$i]->name;
                 ?><br><?php
             }
-            // foreach ($allBeers as $key => $beer) {
-                // echo $beer;
-            // }
          ?>
 
     </body>

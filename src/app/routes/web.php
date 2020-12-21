@@ -22,33 +22,3 @@ use App\Models\Beer;
 Route::get('/', function () {
     return view('homepage');
 });
-
-
-//
-// Route::get('/beer/{id}', function () {
-//     return view('welcome', ['id' => $beer_id]);
-// });
-//
-// Route::match(['get', 'post'], '/hello/{firstName}', function ($firstName) {
-//     return view('helloNicolas', ['firstName' => ucfirst($firstName)]);
-// });
-//
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-//
-// // Route::get('/hw', function () {
-// //     return view('hw');
-// // });
-//
-// Route::get('/hw', function () {
-//     return view('hw');
-// });
-//
-// Route::match(['get', 'post'], '/hello/{firstName}', function ($firstName) {
-//     return view('helloNicolas', ['firstName' => ucfirst($firstName)]);
-// });
-//
-//
-//
-// Route::get('/{page}', 'PageController@view')->name('pages.view');
