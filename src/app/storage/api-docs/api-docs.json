@@ -1,0 +1,355 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Swagger Kata-API",
+        "description": "Beers Kata-API",
+        "version": "0.0.1"
+    },
+    "paths": {
+        "/api/beers": {
+            "get": {
+                "tags": [
+                    "Beer"
+                ],
+                "description": "Get all beers",
+                "operationId": "App\\Http\\Controllers\\BeerController::getBeers",
+                "responses": {
+                    "default": {
+                        "description": "List of all beers"
+                    }
+                }
+            }
+        },
+        "/api/beer/{id}": {
+            "get": {
+                "tags": [
+                    "Beer"
+                ],
+                "summary": "Get a beer by ID",
+                "description": "Return a beer by id",
+                "operationId": "getBeerByID",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Beer ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Beer"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/api/beer": {
+            "post": {
+                "tags": [
+                    "Beer"
+                ],
+                "description": "Create a beer",
+                "operationId": "App\\Http\\Controllers\\BeerController::createBeer",
+                "responses": {
+                    "default": {
+                        "description": "Confirmation"
+                    }
+                }
+            }
+        },
+        "/api/beer/:id": {
+            "put": {
+                "tags": [
+                    "Beer"
+                ],
+                "description": "Modify a beer by id",
+                "operationId": "App\\Http\\Controllers\\BeerController::putBeer",
+                "responses": {
+                    "default": {
+                        "description": "Confirmation"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Beer"
+                ],
+                "description": "Delete a beer by id",
+                "operationId": "App\\Http\\Controllers\\BeerController::deleteBeer",
+                "responses": {
+                    "default": {
+                        "description": "Confirmation"
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "Beer"
+                ],
+                "description": "Partially modify a beer by id",
+                "operationId": "App\\Http\\Controllers\\BeerController::patchBeer",
+                "responses": {
+                    "default": {
+                        "description": "Confirmation"
+                    }
+                }
+            }
+        },
+        "/api/breweries": {
+            "get": {
+                "tags": [
+                    "Brewery"
+                ],
+                "description": "Get all breweries",
+                "operationId": "App\\Http\\Controllers\\BreweryController::getBreweries",
+                "responses": {
+                    "default": {
+                        "description": "List of all breweries"
+                    }
+                }
+            }
+        },
+        "/api/brewery/{id}": {
+            "get": {
+                "tags": [
+                    "Brewery"
+                ],
+                "summary": "Get a brewery by ID",
+                "description": "Return a brewery by id",
+                "operationId": "getBreweryByID",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Brewery ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/api/categories": {
+            "get": {
+                "tags": [
+                    "Category"
+                ],
+                "description": "Get all categories",
+                "operationId": "App\\Http\\Controllers\\CategoryController::getCategories",
+                "responses": {
+                    "default": {
+                        "description": "List of all categories"
+                    }
+                }
+            }
+        },
+        "/api/category/{id}": {
+            "get": {
+                "tags": [
+                    "Category"
+                ],
+                "summary": "Get a category by ID",
+                "description": "Return a category by id",
+                "operationId": "getCategoryByID",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Category ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/api/styles": {
+            "get": {
+                "tags": [
+                    "Style"
+                ],
+                "description": "Get all styles",
+                "operationId": "App\\Http\\Controllers\\StyleController::getStyles",
+                "responses": {
+                    "default": {
+                        "description": "List of all styles"
+                    }
+                }
+            }
+        },
+        "/api/style/{id}": {
+            "get": {
+                "tags": [
+                    "Style"
+                ],
+                "summary": "Get a style by ID",
+                "description": "Return a style by id",
+                "operationId": "getStyleByID",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Style ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Beer": {
+                "title": "Beer",
+                "description": "Beer model",
+                "properties": {
+                    "id": {
+                        "title": "ID",
+                        "description": "ID",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "name": {
+                        "title": "Name",
+                        "description": "Name of the beer",
+                        "type": "string",
+                        "example": "Edel Weissen"
+                    },
+                    "descript": {
+                        "title": "Description",
+                        "description": "Description of the beer",
+                        "type": "string",
+                        "example": "This is beer description"
+                    },
+                    "cat_id": {
+                        "$ref": "#/components/schemas/Category"
+                    },
+                    "brewery_id": {
+                        "$ref": "#/components/schemas/Brewery"
+                    },
+                    "created_at": {
+                        "title": "Created at",
+                        "description": "Created at",
+                        "type": "string",
+                        "format": "datetime",
+                        "example": "2020-01-27 17:50:45"
+                    },
+                    "last_mod": {
+                        "title": "last_mod",
+                        "description": "last_mod",
+                        "type": "string",
+                        "format": "datetime",
+                        "example": "2020-01-27 17:50:45"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Beer"
+                }
+            },
+            "Brewery": {
+                "title": "Brewery",
+                "description": "Brewery model",
+                "properties": {
+                    "id": {
+                        "title": "ID",
+                        "description": "ID",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "cat_name": {
+                        "title": "Brewery",
+                        "description": "Name of the brewery",
+                        "type": "string",
+                        "example": "Alaskan Brewing"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Brewery"
+                }
+            },
+            "Category": {
+                "title": "Category",
+                "description": "Category model",
+                "properties": {
+                    "id": {
+                        "title": "ID",
+                        "description": "ID",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "cat_name": {
+                        "title": "Category",
+                        "description": "Name of the category",
+                        "type": "string",
+                        "example": "IPA"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Category"
+                }
+            }
+        }
+    },
+    "security": [
+        []
+    ]
+}
