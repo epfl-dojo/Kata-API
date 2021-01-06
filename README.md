@@ -34,20 +34,31 @@ docker-compose up -d
 ## Objectifs
 - [ ] Forcker le dépot Git
 - [ ] Créer une nouvelle branche (ex. : `usermame/langage`)
-- [ ] Ajouter un container Docker (pour le langage de votre choix) au docker-compose
-- [ ] Comprendre comment détecter les types de [requêtes HTTP](https://developer.mozilla.org/fr/docs/Web/HTTP/M%C3%A9thode) (GET, POST, PUT, PATCH, DELETE)
+- [ ] Ajouter un container Docker (pour le langage de votre choix) 
+  au docker-compose
+- [ ] Comprendre comment détecter les types de [requêtes HTTP](https://developer.mozilla.org/fr/docs/Web/HTTP/M%C3%A9thode)
+  (GET, POST, PUT, PATCH, DELETE)
 - [ ] Mise en place du CRUD pour l'endpoint `/beer*`
    - [ ] Mise en place du **`C`**`reate`
    - [ ] Mise en place du **`R`**`ead`
    - [ ] Mise en place du **`U`**`pdate`
    - [ ] Mise en place du **`D`**`elete`
-- [ ] Mise en place de la lecture des endpoints `/breweries`, `/categories` et `/styles`
-- [ ] Tester l’API avec [postman](https://www.postman.com/), [curl](https://curl.haxx.se/), [httpie](https://httpie.org/), etc… et indiquer ces requêtes dans un fichier de résultats
-- [ ] Faire une page qui documente l'utilisation de l’API (avec un example de requête pour chaques commandes)
+- [ ] Mise en place de la lecture des endpoints `/brewerie*`, `/categorie*` et `/style*`
+- [ ] Tester l’API avec
+  - [postman](https://www.postman.com/),
+  - [insomnia](https://insomnia.rest), 
+  - [curl](https://curl.haxx.se/), 
+  - [httpie](https://httpie.org/), etc…  
+  et indiquer ces requêtes dans un fichier de résultats
+- [ ] Faire une page qui documente l'utilisation de l’API 
+  (avec un example de requête pour chaques commandes)
 
 Pour aller plus loin
-- [ ] Se poser des questions sur la pagination dans le cas de résultats importants, par exemple en utilisant le HEADER et le méthode HTTP [HEAD](https://developer.mozilla.org/fr/docs/Web/HTTP/M%C3%A9thode/HEAD)
-- [ ] Intégration de [swagger](https://swagger.io/tools/open-source/open-source-integrations/) dans le langage choisi
+- [ ] Se poser des questions sur la pagination dans le cas de résultats 
+  importants, par exemple en utilisant le HEADER et le méthode HTTP 
+  [HEAD](https://developer.mozilla.org/fr/docs/Web/HTTP/M%C3%A9thode/HEAD)
+- [ ] Intégration de [swagger](https://swagger.io/tools/open-source/open-source-integrations/) 
+  dans le langage choisi
 
 
 ## Description des routes à utiliser
@@ -61,15 +72,17 @@ Pour aller plus loin
 |`/beer/{id}`      | Modifier une bière                      | PUT      |
 |`/beer/{id}`      | Modifier partiellement une bière        | PATCH    |
 |`/breweries`      | Affiche toutes les brasseries           | GET      |
-|`/breweries/{id}` | Affiche la brasserie `{id}`             | GET      |
+|`/brewerie/{id}`  | Affiche la brasserie `{id}`             | GET      |
 |`/categories`     | Affiche toutes les catégories           | GET      |
-|`/categories/{id}`| Affiche la catégorie `{id}`             | GET      |
+|`/categorie/{id}` | Affiche la catégorie `{id}`             | GET      |
 |`/styles`         | Affiche toutes les styles               | GET      |
-|`/styles/{id}`    | Affiche le style `{id}`                 | GET      |
+|`/style/{id}`     | Affiche le style `{id}`                 | GET      |
 
 
 ## Contributeurs (langages par ordre alphabétique)
-[![saphirevert-repos][saphirevert-shield]][saphirevert-url]
+
+  - [![saphirevert-repos][saphirevert-shield]][saphirevert-url]
 
 [saphirevert-shield]: https://badgen.net/badge/Github/SaphireVert/green?icon=https://svgshare.com/i/Srf.svg
 [saphirevert-url]: https://github.com/saphirevert/
+
