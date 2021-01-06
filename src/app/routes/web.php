@@ -20,5 +20,6 @@ use App\Models\Beer;
 
 
 Route::get('/', function () {
-    return view('homepage');
+
+    return view('homepage', ['data' => Beer::getBeersWithDetails()]);
 });

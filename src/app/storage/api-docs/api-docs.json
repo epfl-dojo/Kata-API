@@ -1,9 +1,9 @@
 {
     "openapi": "3.0.0",
     "info": {
-        "title": "Kata-API",
-        "description": "L5 Swagger OpenApi description",
-        "version": "1.0.0"
+        "title": "Swagger Kata-API",
+        "description": "Beers Kata-API",
+        "version": "0.0.1"
     },
     "paths": {
         "/api/beers": {

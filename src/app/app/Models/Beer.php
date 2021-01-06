@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Log;
 use DateTime;
 use \Illuminate\Support\Facades\Validator;
+use DB;
 
 /**
  * @OA\Schema(
@@ -21,6 +22,18 @@ use \Illuminate\Support\Facades\Validator;
 class Beer extends Model
 {
     use HasFactory;
+
+// WHERE beers.brewery_id = breweries.id AND beers.cat_id = categories.id AND beers.style_id = styles.id
+    public static function getBeersWithDetails(){
+        return DB::table('beers')
+            ->select('beers.*', 'breweries.name as breweryName', 'categories.cat_name as catName', 'styles.style_name as styleName')
+            ->leftJoin('breweries', 'beers.brewery_id', '=', 'breweries.id')
+            ->leftJoin('categories', 'beers.cat_id', '=', 'categories.id')
+            ->leftJoin('styles', 'beers.style_id', '=', 'styles.id')
+            ->limit(30)
+            ->get();
+    }
+
     /**
      * @OA\Property(
      *     title="ID",

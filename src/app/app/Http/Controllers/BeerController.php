@@ -10,6 +10,8 @@ use DateTime;
 
 class BeerController extends Controller
 {
+
+
     /**
     * @OA\Get(
     *     path="/api/beers",
